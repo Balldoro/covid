@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
   "scripts": {
@@ -34,7 +35,6 @@
   "devDependencies": {
     "chart.js": "^2.9.3",
     "react-icons": "^3.10.0",
-    "react-router": "^5.2.0",
     "styled-components": "^5.1.0"
   }
 }
