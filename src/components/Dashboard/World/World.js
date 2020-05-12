@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Wrapper } from "./WorldStyles";
 import Cases from "../Cases/Cases";
 import { fetchGlobalData } from "../../../api";
+import MostInfected from "../MostInfected/MostInfected";
 
 function World() {
   const [cases, setCases] = useState({});
   const [mostInfected, setMostInfected] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
-      const { cases, topCountries } = await fetchGlobalData();
+      const { cases, mostInfected } = await fetchGlobalData();
       setCases(cases);
-      setMostInfected(topCountries);
+      setMostInfected(mostInfected);
     };
     fetchAPI();
   }, []);
@@ -22,6 +23,7 @@ function World() {
         recovered={cases.TotalRecovered}
         deaths={cases.TotalDeaths}
       />
+      <MostInfected countries={mostInfected} />
     </Wrapper>
   );
 }

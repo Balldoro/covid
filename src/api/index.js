@@ -25,5 +25,5 @@ const getMostInfectedFrom = data => {
   const mostInfected = data
     .sort((a, b) => (a.TotalConfirmed > b.TotalConfirmed ? -1 : 1))
     .slice(0, amountOfTopCountries);
-  return { mostInfected };
+  return mostInfected;
 };

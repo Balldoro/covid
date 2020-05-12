@@ -17,4 +17,5 @@ export const CardTitle = styled.h2`
   font-family: Roboto, sans-serif;
   font-size: 1.15rem;
   color: #fff;
+  margin-bottom: 1rem;
 `;
