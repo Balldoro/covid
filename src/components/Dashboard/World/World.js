@@ -1,12 +1,12 @@
 import React from "react";
+import { Wrapper } from "./WorldStyles";
+import Cases from "../Cases/Cases";
 
 function World() {
   return (
-    <div>
-      <div>A</div>
-      <div>B</div>
-      <div>C</div>
-    </div>
+    <Wrapper>
+      <Cases />
+    </Wrapper>
   );
 }
 
