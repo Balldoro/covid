@@ -3,14 +3,14 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.2rem;
+  gap: 1rem;
 `;
 
 export const Case = styled.div`
-  padding: 14px;
+  padding: 1rem;
   border-radius: 10px;
   background-color: ${props =>
-    props.affected
+    props.confirmed
       ? "#790a98"
       : props.active
       ? "#03568e"
@@ -18,13 +18,13 @@ export const Case = styled.div`
       ? "#198200"
       : "#a70303"};
   color: #fff;
-  margin: 0.6rem 0;
 `;
 
 export const CaseTitle = styled.h3`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: 400;
+  margin-bottom: 0.5rem;
 `;
 
 export const CaseCounter = styled.span`

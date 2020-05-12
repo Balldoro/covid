@@ -14,4 +14,8 @@ export const GlobalStyle = createGlobalStyle`
   ul {
     list-style: none;
   }
+  #root {
+    min-height: 100vh;
+    background-color: #272727;
+  }
   `;

@@ -3,9 +3,11 @@ import { NavLink } from "react-router-dom";
 
 export const Wrapper = styled.nav`
   position: fixed;
+  z-index: 100;
   bottom: 0;
   width: 100%;
   height: 70px;
+  background-color: #fff;
 `;
 
 export const List = styled.ul`
