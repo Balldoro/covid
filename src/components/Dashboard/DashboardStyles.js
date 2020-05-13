@@ -11,6 +11,7 @@ export const Card = styled.section`
   color: #fff;
   padding: 1rem;
   border-radius: 14px;
+  min-width: 0;
 `;
 
 export const CardTitle = styled.h2`

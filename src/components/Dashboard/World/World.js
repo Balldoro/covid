@@ -3,6 +3,7 @@ import { Wrapper } from "./WorldStyles";
 import Cases from "../Cases/Cases";
 import { fetchGlobalData } from "../../../api";
 import MostInfected from "../MostInfected/MostInfected";
+import Statistics from "../Statistics/Statistics";
 
 function World() {
   const [cases, setCases] = useState({});
@@ -18,6 +19,12 @@ function World() {
   return (
     <Wrapper>
       <Cases
+        confirmed={cases.TotalConfirmed}
+        active={cases.TotalAffected}
+        recovered={cases.TotalRecovered}
+        deaths={cases.TotalDeaths}
+      />
+      <Statistics
         confirmed={cases.TotalConfirmed}
         active={cases.TotalAffected}
         recovered={cases.TotalRecovered}
