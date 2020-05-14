@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { ChartWrapper } from "./StatisticsStyles";
 import { Chart } from "chart.js";
 
-function TotalCases({
+function TotalStatistics({
   cases: { TotalConfirmed, TotalAffected, TotalRecovered, TotalDeaths }
 }) {
   const cnv = "stats-chart";
@@ -54,4 +54,4 @@ function TotalCases({
   );
 }
 
-export default TotalCases;
+export default TotalStatistics;

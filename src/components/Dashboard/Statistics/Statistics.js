@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Card, CardTitle } from "../DashboardStyles";
-import NewCases from "./NewCases";
-import TotalCases from "./TotalCases";
-import { Button, Navigation } from "./StatisticsStyles";
+import { Card, CardTitle, Navigation, Button } from "../DashboardStyles";
+import NewStatistics from "./NewStatistics";
+import TotalStatistics from "./TotalStatistics";
 
 function Statistics({ cases, newCases }) {
   const [activeButton, setActiveButton] = useState("total");
@@ -25,9 +24,9 @@ function Statistics({ cases, newCases }) {
       </Navigation>
       {console.log(newCases)}
       {activeButton === "total" ? (
-        <TotalCases cases={cases} />
+        <TotalStatistics cases={cases} />
       ) : (
-        <NewCases cases={newCases} />
+        <NewStatistics cases={newCases} />
       )}
     </Card>
   );
