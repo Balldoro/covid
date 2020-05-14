@@ -1,27 +1,34 @@
-import React from "react";
-import { Card } from "../DashboardStyles";
-import { Wrapper, Case, CaseTitle, CaseCounter } from "./CasesStyles";
+import React, { useState } from "react";
+import { Card, CardTitle, Navigation, Button } from "../DashboardStyles";
+import { Wrapper } from "./CasesStyles";
+import TotalCases from "./TotalCases";
+import NewCases from "./NewCases";
 
-function Cases({ confirmed, active, recovered, deaths }) {
+function Cases({ cases, newCases }) {
+  const [activeButton, setActiveButton] = useState("total");
   return (
     <Card>
+      <CardTitle>Cases</CardTitle>
+      <Navigation>
+        <Button
+          active={activeButton === "total" ? true : false}
+          onClick={() => setActiveButton("total")}
+        >
+          Total
+        </Button>
+        <Button
+          active={activeButton === "new" ? true : false}
+          onClick={() => setActiveButton("new")}
+        >
+          New
+        </Button>
+      </Navigation>
       <Wrapper>
-        <Case confirmed>
-          <CaseTitle>Confirmed</CaseTitle>
-          <CaseCounter>{confirmed}</CaseCounter>
-        </Case>
-        <Case active>
-          <CaseTitle>Active</CaseTitle>
-          <CaseCounter>{active}</CaseCounter>
-        </Case>
-        <Case recovered>
-          <CaseTitle>Recovered</CaseTitle>
-          <CaseCounter>{recovered}</CaseCounter>
-        </Case>
-        <Case deaths>
-          <CaseTitle>Deaths</CaseTitle>
-          <CaseCounter>{deaths}</CaseCounter>
-        </Case>
+        {activeButton === "total" ? (
+          <TotalCases cases={cases} />
+        ) : (
+          <NewCases cases={newCases} />
+        )}
       </Wrapper>
     </Card>
   );

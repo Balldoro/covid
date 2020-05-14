@@ -20,12 +20,7 @@ function World() {
   }, []);
   return (
     <Wrapper>
-      <Cases
-        confirmed={cases.TotalConfirmed}
-        active={cases.TotalAffected}
-        recovered={cases.TotalRecovered}
-        deaths={cases.TotalDeaths}
-      />
+      <Cases cases={cases} newCases={newCases} />
       <Statistics cases={cases} newCases={newCases} />
       <MostInfected countries={mostInfected} />
     </Wrapper>
