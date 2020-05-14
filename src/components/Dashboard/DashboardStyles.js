@@ -5,6 +5,9 @@ export const Wrapper = styled.main`
   width: 90%;
   margin: 0 auto;
   padding-bottom: 85px;
+  @media (min-width: 600px) {
+    padding-bottom: 1rem;
+  }
 `;
 
 export const Card = styled.section`

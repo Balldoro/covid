@@ -8,17 +8,35 @@ export const Wrapper = styled.nav`
   width: 100%;
   height: 70px;
   background-color: #fff;
+  @media (min-width: 600px) {
+    position: static;
+    min-width: 120px;
+    width: auto;
+    min-height: 100vh;
+    height: auto;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 `;
 
 export const List = styled.ul`
   display: flex;
   width: 100%;
   height: 100%;
+  @media (min-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export const ListItem = styled.li`
   width: 50%;
   border: 1px solid #ebebeb;
+  @media (min-width: 600px) {
+    width: 100%;
+    height: 70px;
+    border: none;
+    border-bottom: 1px solid #ebebeb;
+  }
 `;
 
 export const LinkIcon = styled.div`

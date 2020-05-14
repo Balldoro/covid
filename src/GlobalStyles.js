@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   #root {
+    display:flex;
     min-height: 100vh;
     background-color: #272727;
   }

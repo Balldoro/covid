@@ -10,9 +10,11 @@ function App() {
     <Router>
       <Redirect from="/" to="/global" />
       <GlobalStyle />
-      <Header />
       <Sidebar />
-      <Dashboard />
+      <div style={{ width: "100%" }}>
+        <Header />
+        <Dashboard />
+      </div>
     </Router>
   );
 }
