@@ -4,6 +4,9 @@ export const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
+  @media (min-width: 420px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const Case = styled.div`

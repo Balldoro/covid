@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
+  max-width: 1480px;
+  width: 90%;
+  margin: 0 auto;
   color: #fff;
-  padding: 1rem;
+  padding: 1rem 0;
 `;
 
 export const Logo = styled.div`

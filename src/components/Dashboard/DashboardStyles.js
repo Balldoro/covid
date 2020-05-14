@@ -4,6 +4,7 @@ export const Wrapper = styled.main`
   max-width: 1480px;
   width: 90%;
   margin: 0 auto;
+  padding-bottom: 85px;
 `;
 
 export const Card = styled.section`
