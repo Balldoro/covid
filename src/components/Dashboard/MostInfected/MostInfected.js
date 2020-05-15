@@ -1,26 +1,41 @@
 import React from "react";
-import { Card, CardTitle } from "../DashboardStyles";
-import { ListItem, CountryName, CountryInfo } from "./MostInfectedStyles";
+import { CardTitle } from "../DashboardStyles";
+import {
+  ListItem,
+  CountryName,
+  CountryInfo,
+  MostInfectedCard
+} from "./MostInfectedStyles";
+import CountUp from "react-countup";
 
 function MostInfected({ countries }) {
   return (
-    <Card>
+    <MostInfectedCard>
       <CardTitle>Most infected countries</CardTitle>
-      <ul>
-        {countries.map(country => (
-          <ListItem key={country.CountryCode}>
-            <CountryInfo>
-              <img
-                src={`https://www.countryflags.io/${country.CountryCode}/shiny/24.png`}
-                alt={country.Slug}
-              />
-              <CountryName>{country.Country}</CountryName>
-            </CountryInfo>
-            <span>{country.TotalConfirmed}</span>
-          </ListItem>
-        ))}
-      </ul>
-    </Card>
+      {countries ? (
+        <ul>
+          {countries.map(country => (
+            <ListItem key={country.CountryCode}>
+              <CountryInfo>
+                <img
+                  src={`https://www.countryflags.io/${country.CountryCode}/shiny/24.png`}
+                  alt={country.Slug}
+                />
+                <CountryName>{country.Country}</CountryName>
+              </CountryInfo>
+              <span>
+                <CountUp
+                  start={0}
+                  end={country.TotalConfirmed}
+                  duration={3}
+                  separator=","
+                />
+              </span>
+            </ListItem>
+          ))}
+        </ul>
+      ) : null}
+    </MostInfectedCard>
   );
 }
 export default MostInfected;

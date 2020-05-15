@@ -6,7 +6,6 @@ export const fetchGlobalData = async () => {
       const cases = getCasesFrom(data.Global);
       const newCases = getNewCasesFrom(data.Global);
       const mostInfected = getMostInfectedFrom(data.Countries);
-      console.log(newCases);
       return { cases, newCases, mostInfected };
     } else {
       window.location.reload(true);
