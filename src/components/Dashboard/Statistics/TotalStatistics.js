@@ -22,13 +22,9 @@ function TotalStatistics({
               recoveredPercentage.toFixed(2),
               deathsPercentage.toFixed(2)
             ],
-            backgroundColor: [
-              "rgba(3, 86, 142, 0.8)",
-              "rgba(25, 130, 0, 0.8)",
-              "rgba(167, 3, 3, 0.8)"
-            ],
+            backgroundColor: ["#0364a5", "#198200", "#a70303"],
             borderColor: ["#0364a5", "#198200", "#a70303"],
-            hoverBackgroundColor: ["#0364a5", "#198200", "#a70303"]
+            hoverBackgroundColor: ["#007cd0", "#24b701", "#c70000"]
           }
         ]
       },
@@ -41,7 +37,8 @@ function TotalStatistics({
           text: "Total cases proportion in %",
           fontColor: "#fff",
           fontFamily: "Arial",
-          fontSize: "16"
+          fontSize: "16",
+          fontStyle: "normal"
         }
       }
     });

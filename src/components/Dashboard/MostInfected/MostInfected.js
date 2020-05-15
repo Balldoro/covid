@@ -4,7 +4,8 @@ import {
   ListItem,
   CountryName,
   CountryInfo,
-  MostInfectedCard
+  MostInfectedCard,
+  Infected
 } from "./MostInfectedStyles";
 import CountUp from "react-countup";
 
@@ -23,14 +24,14 @@ function MostInfected({ countries }) {
                 />
                 <CountryName>{country.Country}</CountryName>
               </CountryInfo>
-              <span>
+              <Infected>
                 <CountUp
                   start={0}
                   end={country.TotalConfirmed}
                   duration={3}
                   separator=","
                 />
-              </span>
+              </Infected>
             </ListItem>
           ))}
         </ul>

@@ -7,4 +7,7 @@ export const Wrapper = styled.div`
   @media (min-width: 860px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  @media (min-width: 980px) {
+    gap: 2.5rem;
+  }
 `;

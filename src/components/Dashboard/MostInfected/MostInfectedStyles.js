@@ -8,8 +8,6 @@ export const MostInfectedCard = styled(Card)`
   }
 `;
 
-export const List = styled.ul``;
-
 export const ListItem = styled.li`
   font-family: Roboto, sans-serif;
   font-size: 0.95rem;
@@ -23,6 +21,9 @@ export const ListItem = styled.li`
   @media (min-width: 420px) {
     flex-direction: row;
     min-height: 60px;
+  }
+  @media (min-width: 980px) {
+    font-size: 1rem;
   }
 `;
 
@@ -39,5 +40,11 @@ export const CountryInfo = styled.div`
   align-items: center;
   @media (min-width: 420px) {
     flex-direction: row;
+  }
+`;
+
+export const Infected = styled.span`
+  @media (min-width: 980px) {
+    font-size: 1.2rem;
   }
 `;

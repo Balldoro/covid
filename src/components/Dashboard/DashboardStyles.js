@@ -16,6 +16,9 @@ export const Card = styled.section`
   padding: 1rem;
   border-radius: 14px;
   min-width: 0;
+  @media (min-width: 980px) {
+    padding: 1.5rem;
+  }
 `;
 
 export const CardTitle = styled.h2`
@@ -23,6 +26,9 @@ export const CardTitle = styled.h2`
   font-size: 1.15rem;
   color: #fff;
   margin-bottom: 1.5rem;
+  @media (min-width: 980px) {
+    font-size: 1.2rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -43,5 +49,5 @@ export const Button = styled.button`
 
 export const Navigation = styled.div`
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 `;
