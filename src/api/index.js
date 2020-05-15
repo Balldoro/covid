@@ -37,3 +37,17 @@ const getMostInfectedFrom = data => {
     .slice(0, amountOfTopCountries);
   return mostInfected;
 };
+
+export const fetchAllCountries = async () => {
+  try {
+    const response = await fetch("https://api.covid19api.com/countries");
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      window.location.reload(true);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
