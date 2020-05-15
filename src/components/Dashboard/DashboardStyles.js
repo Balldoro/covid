@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.main`
-  max-width: 1480px;
+  max-width: 1280px;
   width: 90%;
   margin: 0 auto;
   padding-bottom: 85px;
@@ -22,7 +22,7 @@ export const CardTitle = styled.h2`
   font-family: Roboto, sans-serif;
   font-size: 1.15rem;
   color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const Button = styled.button`

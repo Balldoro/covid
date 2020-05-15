@@ -1,5 +1,5 @@
 import React from "react";
-import { GlobalStyle } from "./GlobalStyles";
+import { GlobalStyle, Wrapper } from "./GlobalStyles";
 import { BrowserRouter as Router, Redirect } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
@@ -11,10 +11,10 @@ function App() {
       <Redirect from="/" to="/global" />
       <GlobalStyle />
       <Sidebar />
-      <div style={{ width: "100%" }}>
+      <Wrapper>
         <Header />
         <Dashboard />
-      </div>
+      </Wrapper>
     </Router>
   );
 }

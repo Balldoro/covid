@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
@@ -20,3 +21,7 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #272727;
   }
   `;
+
+export const Wrapper = styled.div`
+  width: 100%;
+`;

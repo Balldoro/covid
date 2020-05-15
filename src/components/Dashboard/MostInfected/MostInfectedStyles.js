@@ -1,4 +1,12 @@
 import styled from "styled-components";
+import { Card } from "../DashboardStyles";
+
+export const MostInfectedCard = styled(Card)`
+  @media (min-width: 860px) {
+    grid-column: 2/-1;
+    grid-row: 1/3;
+  }
+`;
 
 export const List = styled.ul``;
 

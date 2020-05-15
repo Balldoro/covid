@@ -1,12 +1,16 @@
 export const fetchGlobalData = async () => {
   try {
     const response = await fetch("https://api.covid19api.com/summary");
-    const data = await response.json();
-    const cases = getCasesFrom(data.Global);
-    const newCases = getNewCasesFrom(data.Global);
-    const mostInfected = getMostInfectedFrom(data.Countries);
-    console.log(newCases);
-    return { cases, newCases, mostInfected };
+    if (response.ok) {
+      const data = await response.json();
+      const cases = getCasesFrom(data.Global);
+      const newCases = getNewCasesFrom(data.Global);
+      const mostInfected = getMostInfectedFrom(data.Countries);
+      console.log(newCases);
+      return { cases, newCases, mostInfected };
+    } else {
+      window.location.reload(true);
+    }
   } catch (error) {
     console.error(error);
   }
@@ -28,7 +32,7 @@ const getNewCasesFrom = ({ NewConfirmed, NewRecovered, NewDeaths }) => {
 };
 
 const getMostInfectedFrom = data => {
-  const amountOfTopCountries = 6;
+  const amountOfTopCountries = 10;
   const mostInfected = data
     .sort((a, b) => (a.TotalConfirmed > b.TotalConfirmed ? -1 : 1))
     .slice(0, amountOfTopCountries);
