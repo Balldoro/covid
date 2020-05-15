@@ -17,10 +17,13 @@ export const ListItem = styled.li`
   align-items: center;
   min-height: 80px;
   padding: 6px 0;
-  border-top: 1px solid #2a2a2a;
+  border-radius: 10px;
+  background-color: #272727;
+  margin-bottom: 0.7rem;
   @media (min-width: 420px) {
     flex-direction: row;
     min-height: 60px;
+    padding: 0 8px;
   }
   @media (min-width: 980px) {
     font-size: 1rem;
