@@ -34,7 +34,7 @@ export const List = styled.ul`
   height: 85%;
   display: flex;
   justify-content: space-between;
-  height: 500px;
+  max-height: 500px;
   padding: 0 0.8rem 0 0;
   &::-webkit-scrollbar {
     width: 0.8rem;
@@ -54,7 +54,8 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
   width: 100%;
-  min-height: 80px;
+  min-height: 70px;
+  max-height: 80px;
   margin-bottom: 0.7rem;
   @media (min-width: 420px) {
     width: 48%;
@@ -76,6 +77,10 @@ export const LinkWrapper = styled(Link)`
   width: 100%;
   text-align: center;
   border-radius: 10px;
+  &:hover,
+  &:focus {
+    color: #23b400;
+  }
   @media (min-width: 860px) {
     flex-direction: row;
     text-align: left;
