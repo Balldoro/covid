@@ -43,9 +43,26 @@ export const fetchAllCountries = async () => {
     const response = await fetch("https://api.covid19api.com/countries");
     if (response.ok) {
       const data = await response.json();
-      return data;
+      return data.sort((a, b) => (a.Country > b.Country ? 1 : -1));
     } else {
       window.location.reload(true);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchSelectedCountry = async countrySlug => {
+  try {
+    const response = await fetch(`https://api.covid19api.com/summary`);
+    if (response.ok) {
+      const data = await response.json();
+      const selectedCountry = data.Countries.filter(country => {
+        return country.Slug === countrySlug;
+      });
+      const cases = getCasesFrom(selectedCountry[0]);
+      const newCases = getNewCasesFrom(selectedCountry[0]);
+      return { cases, newCases };
     }
   } catch (error) {
     console.error(error);
