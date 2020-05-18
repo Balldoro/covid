@@ -7,8 +7,6 @@ export const fetchGlobalData = async () => {
       const newCases = getNewCasesFrom(data.Global);
       const mostInfected = getMostInfectedFrom(data.Countries);
       return { cases, newCases, mostInfected };
-    } else {
-      window.location.reload(true);
     }
   } catch (error) {
     console.error(error);
@@ -63,6 +61,29 @@ export const fetchSelectedCountry = async countrySlug => {
       const cases = getCasesFrom(selectedCountry[0]);
       const newCases = getNewCasesFrom(selectedCountry[0]);
       return { cases, newCases };
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const fetchDailyOfSelectedCountry = async countrySlug => {
+  try {
+    const response = await fetch(
+      `https://api.covid19api.com/total/dayone/country/${countrySlug}`
+    );
+    if (response.ok) {
+      const data = await response.json();
+      const filteredData = data.filter(item => item.Confirmed !== 0);
+      return filteredData.map(day => {
+        return {
+          Date: day.Date,
+          Deaths: day.Deaths,
+          Recovered: day.Recovered,
+          Active: day.Active,
+          Confirmed: day.Confirmed
+        };
+      });
     }
   } catch (error) {
     console.error(error);
