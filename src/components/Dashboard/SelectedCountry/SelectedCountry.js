@@ -53,6 +53,12 @@ function SelectedCountry({ match }) {
     <Wrapper>
       <Cases cases={cases} newCases={newCases} />
       <Statistics cases={cases} newCases={newCases} />
+      <LineChart
+        confirmed={dailyConfirmed}
+        active={dailyActive}
+        recovered={dailyRecovered}
+        deaths={dailyDeaths}
+      />
     </Wrapper>
   );
 }
