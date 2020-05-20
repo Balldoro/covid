@@ -22,7 +22,6 @@ const getCasesFrom = ({ TotalConfirmed, TotalRecovered, TotalDeaths }) => {
     TotalDeaths
   };
 };
-
 const getNewCasesFrom = ({ NewConfirmed, NewRecovered, NewDeaths }) => {
   const AllNewCases = NewConfirmed + NewRecovered + NewDeaths;
   return { AllNewCases, NewConfirmed, NewRecovered, NewDeaths };
@@ -50,23 +49,6 @@ export const fetchAllCountries = async () => {
   }
 };
 
-export const fetchSelectedCountry = async countrySlug => {
-  try {
-    const response = await fetch(`https://api.covid19api.com/summary`);
-    if (response.ok) {
-      const data = await response.json();
-      const selectedCountry = data.Countries.filter(country => {
-        return country.Slug === countrySlug;
-      });
-      const cases = getCasesFrom(selectedCountry[0]);
-      const newCases = getNewCasesFrom(selectedCountry[0]);
-      return { cases, newCases };
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
-
 export const fetchDailyOfSelectedCountry = async countrySlug => {
   try {
     const response = await fetch(
@@ -74,16 +56,16 @@ export const fetchDailyOfSelectedCountry = async countrySlug => {
     );
     if (response.ok) {
       const data = await response.json();
-      const filteredData = data.filter(item => item.Confirmed !== 0);
-      return filteredData.map(day => {
-        return {
+      const dailyData = data
+        .filter(item => item.Confirmed !== 0)
+        .map(day => ({
           Date: day.Date,
           Deaths: day.Deaths,
           Recovered: day.Recovered,
           Active: day.Active,
           Confirmed: day.Confirmed
-        };
-      });
+        }));
+      return dailyData;
     }
   } catch (error) {
     console.error(error);
