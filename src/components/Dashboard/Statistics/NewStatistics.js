@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { Chart } from "chart.js";
 import { ChartWrapper } from "./StatisticsStyles";
+import getPercentage from "../../helpers/getPercentage";
 
 function NewCases({
   cases: { AllNewCases, NewConfirmed, NewRecovered, NewDeaths }
 }) {
   const cnv = "stats-chart";
   useEffect(() => {
-    const activePercentage = (NewConfirmed / AllNewCases) * 100;
-    const recoveredPercentage = (NewRecovered / AllNewCases) * 100;
-    const deathsPercentage = (NewDeaths / AllNewCases) * 100;
+    const activePercentage = getPercentage(NewConfirmed, AllNewCases);
+    const recoveredPercentage = getPercentage(NewRecovered, AllNewCases);
+    const deathsPercentage = getPercentage(NewDeaths, AllNewCases);
     const statsChart = new Chart(cnv, {
       type: "pie",
       data: {
@@ -17,11 +18,7 @@ function NewCases({
         datasets: [
           {
             label: "New cases",
-            data: [
-              activePercentage.toFixed(2),
-              recoveredPercentage.toFixed(2),
-              deathsPercentage.toFixed(2)
-            ],
+            data: [activePercentage, recoveredPercentage, deathsPercentage],
             backgroundColor: ["#0364a5", "#198200", "#a70303"],
             borderColor: ["#0364a5", "#198200", "#a70303"],
             hoverBackgroundColor: ["#007cd0", "#24b701", "#c70000"]
@@ -31,14 +28,11 @@ function NewCases({
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        legend: false,
-        title: {
-          display: true,
-          text: "New cases proportion in %",
-          fontColor: "#fff",
-          fontFamily: "Arial",
-          fontSize: "16",
-          fontStyle: "normal"
+        legend: {
+          labels: {
+            fontColor: "#fff",
+            fontFamily: "'Arial','sans-serif'"
+          }
         }
       }
     });
@@ -46,7 +40,6 @@ function NewCases({
   }, [AllNewCases, NewConfirmed, NewRecovered, NewDeaths]);
   return (
     <ChartWrapper>
-      {console.log(NewRecovered, NewConfirmed)}
       <canvas id={cnv} />
     </ChartWrapper>
   );

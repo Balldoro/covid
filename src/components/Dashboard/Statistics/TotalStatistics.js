@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
 import { ChartWrapper } from "./StatisticsStyles";
 import { Chart } from "chart.js";
+import getPercentage from "../../helpers/getPercentage";
 
 function TotalStatistics({
   cases: { TotalConfirmed, TotalAffected, TotalRecovered, TotalDeaths }
 }) {
   const cnv = "stats-chart";
   useEffect(() => {
-    const activePercentage = (TotalAffected / TotalConfirmed) * 100;
-    const recoveredPercentage = (TotalRecovered / TotalConfirmed) * 100;
-    const deathsPercentage = (TotalDeaths / TotalConfirmed) * 100;
+    const activePercentage = getPercentage(TotalAffected, TotalConfirmed);
+    const recoveredPercentage = getPercentage(TotalRecovered, TotalConfirmed);
+    const deathsPercentage = getPercentage(TotalDeaths, TotalConfirmed);
     const statsChart = new Chart(cnv, {
       type: "pie",
       data: {
@@ -17,11 +18,7 @@ function TotalStatistics({
         datasets: [
           {
             label: "Proportions",
-            data: [
-              activePercentage.toFixed(2),
-              recoveredPercentage.toFixed(2),
-              deathsPercentage.toFixed(2)
-            ],
+            data: [activePercentage, recoveredPercentage, deathsPercentage],
             backgroundColor: ["#0364a5", "#198200", "#a70303"],
             borderColor: ["#0364a5", "#198200", "#a70303"],
             hoverBackgroundColor: ["#007cd0", "#24b701", "#c70000"]
@@ -31,14 +28,11 @@ function TotalStatistics({
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        legend: false,
-        title: {
-          display: true,
-          text: "Total cases proportion in %",
-          fontColor: "#fff",
-          fontFamily: "Arial",
-          fontSize: "16",
-          fontStyle: "normal"
+        legend: {
+          labels: {
+            fontColor: "#fff",
+            fontFamily: "'Arial','sans-serif'"
+          }
         }
       }
     });
