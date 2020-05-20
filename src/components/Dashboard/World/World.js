@@ -4,25 +4,37 @@ import Cases from "../Cases/Cases";
 import { fetchGlobalData } from "../../../api";
 import MostInfected from "../MostInfected/MostInfected";
 import Statistics from "../Statistics/Statistics";
+import { SpinnerWrapper, Spinner } from "../DashboardStyles";
 
 function World() {
   const [cases, setCases] = useState({});
   const [newCases, setNewCases] = useState({});
   const [mostInfected, setMostInfected] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchAPI = async () => {
+      setIsLoading(true);
       const { cases, newCases, mostInfected } = await fetchGlobalData();
       setNewCases(newCases);
       setCases(cases);
       setMostInfected(mostInfected);
+      setIsLoading(false);
     };
     fetchAPI();
   }, []);
   return (
     <Wrapper>
-      <Cases cases={cases} newCases={newCases} />
-      <Statistics cases={cases} newCases={newCases} />
-      <MostInfected countries={mostInfected} />
+      {isLoading ? (
+        <SpinnerWrapper>
+          <Spinner />
+        </SpinnerWrapper>
+      ) : (
+        <>
+          <Cases cases={cases} newCases={newCases} />
+          <Statistics cases={cases} newCases={newCases} />
+          <MostInfected countries={mostInfected} />
+        </>
+      )}
     </Wrapper>
   );
 }

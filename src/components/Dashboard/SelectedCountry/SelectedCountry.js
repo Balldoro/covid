@@ -7,6 +7,7 @@ import Cases from "../Cases/Cases";
 import Statistics from "../Statistics/Statistics";
 import { Wrapper } from "./SelectedCountryStyles";
 import LineChart from "../LineChart/LineChart";
+import { SpinnerWrapper, Spinner } from "../DashboardStyles";
 
 function SelectedCountry({ match }) {
   const [cases, setCases] = useState({});
@@ -15,16 +16,20 @@ function SelectedCountry({ match }) {
   const [dailyActive, setDailyActive] = useState([]);
   const [dailyRecovered, setDailyRecovered] = useState([]);
   const [dailyDeaths, setDailyDeaths] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     const fetchAPI = async () => {
+      setIsLoading(true);
       const { cases, newCases } = await fetchSelectedCountry(match.params.slug);
       setCases(cases);
       setNewCases(newCases);
+      setIsLoading(false);
     };
     fetchAPI();
   }, [match]);
   useEffect(() => {
     const fetchAPI = async () => {
+      setIsLoading(true);
       const data = await fetchDailyOfSelectedCountry(match.params.slug);
       setDailyConfirmed(
         data.map(day => {
@@ -46,19 +51,28 @@ function SelectedCountry({ match }) {
           return { y: day.Deaths, t: new Date(day.Date) };
         })
       );
+      setIsLoading(false);
     };
     fetchAPI();
   }, [match]);
   return (
     <Wrapper>
-      <Cases cases={cases} newCases={newCases} />
-      <Statistics cases={cases} newCases={newCases} />
-      <LineChart
-        confirmed={dailyConfirmed}
-        active={dailyActive}
-        recovered={dailyRecovered}
-        deaths={dailyDeaths}
-      />
+      {isLoading ? (
+        <SpinnerWrapper>
+          <Spinner />
+        </SpinnerWrapper>
+      ) : (
+        <>
+          <Cases cases={cases} newCases={newCases} />
+          <Statistics cases={cases} newCases={newCases} />
+          <LineChart
+            confirmed={dailyConfirmed}
+            active={dailyActive}
+            recovered={dailyRecovered}
+            deaths={dailyDeaths}
+          />
+        </>
+      )}
     </Wrapper>
   );
 }

@@ -51,3 +51,41 @@ export const Navigation = styled.div`
   display: flex;
   margin-bottom: 1.5rem;
 `;
+
+export const SpinnerWrapper = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Spinner = styled.div`
+  grid-column: 1/-1;
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: auto;
+  &:after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: spinner-rotate 1.2s linear infinite;
+  }
+  @keyframes spinner-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
