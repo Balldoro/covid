@@ -7,15 +7,20 @@ import { SpinnerWrapper, Spinner } from "../DashboardStyles";
 function Countries() {
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
-    const fetchAPI = async () => {
-      setIsLoading(true);
-      const data = await fetchAllCountries();
-      setCountries(data);
-      setIsLoading(false);
-    };
-    fetchAPI();
-  }, []);
+    setIsMounted(true);
+    if (isMounted) {
+      const fetchAPI = async () => {
+        setIsLoading(true);
+        const data = await fetchAllCountries();
+        setCountries(data);
+        setIsLoading(false);
+      };
+      fetchAPI();
+    }
+    return () => setIsMounted(false);
+  }, [isMounted]);
   return (
     <Wrapper>
       {isLoading ? (

@@ -11,17 +11,22 @@ function World() {
   const [newCases, setNewCases] = useState({});
   const [mostInfected, setMostInfected] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
-    const fetchAPI = async () => {
-      setIsLoading(true);
-      const { cases, newCases, mostInfected } = await fetchGlobalData();
-      setNewCases(newCases);
-      setCases(cases);
-      setMostInfected(mostInfected);
-      setIsLoading(false);
-    };
-    fetchAPI();
-  }, []);
+    setIsMounted(true);
+    if (isMounted) {
+      const fetchAPI = async () => {
+        setIsLoading(true);
+        const { cases, newCases, mostInfected } = await fetchGlobalData();
+        setNewCases(newCases);
+        setCases(cases);
+        setMostInfected(mostInfected);
+        setIsLoading(false);
+      };
+      fetchAPI();
+    }
+    return () => setIsMounted(false);
+  }, [isMounted]);
   return (
     <Wrapper>
       {isLoading ? (

@@ -1,6 +1,10 @@
 function getPercentage(numberToDivide, divider) {
-  const percentage = (numberToDivide / divider) * 100;
-  return percentage.toFixed(2);
+  if (divider !== 0) {
+    const percentage = (numberToDivide / divider) * 100;
+    return percentage.toFixed(2);
+  } else {
+    return 0;
+  }
 }
 
 export default getPercentage;
