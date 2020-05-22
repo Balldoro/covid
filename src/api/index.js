@@ -7,6 +7,8 @@ export const fetchGlobalData = async () => {
       const newCases = getNewCasesFrom(data.Global);
       const mostInfected = getMostInfectedFrom(data.Countries);
       return { cases, newCases, mostInfected };
+    } else {
+      window.location.reload(true);
     }
   } catch (error) {
     console.error(error);
@@ -38,12 +40,8 @@ const getMostInfectedFrom = data => {
 export const fetchAllCountries = async () => {
   try {
     const response = await fetch("https://api.covid19api.com/countries");
-    if (response.ok) {
-      const data = await response.json();
-      return data.sort((a, b) => (a.Country > b.Country ? 1 : -1));
-    } else {
-      window.location.reload(true);
-    }
+    const data = await response.json();
+    return data.sort((a, b) => (a.Country > b.Country ? 1 : -1));
   } catch (error) {
     console.error(error);
   }
@@ -54,19 +52,17 @@ export const fetchDailyOfSelectedCountry = async countrySlug => {
     const response = await fetch(
       `https://api.covid19api.com/total/dayone/country/${countrySlug}`
     );
-    if (response.ok) {
-      const data = await response.json();
-      const dailyData = data
-        .filter(item => item.Confirmed !== 0)
-        .map(day => ({
-          Date: day.Date,
-          Deaths: day.Deaths,
-          Recovered: day.Recovered,
-          Active: day.Active,
-          Confirmed: day.Confirmed
-        }));
-      return dailyData;
-    }
+    const data = await response.json();
+    const dailyData = data
+      .filter(item => item.Confirmed !== 0)
+      .map(day => ({
+        Date: day.Date,
+        Deaths: day.Deaths,
+        Recovered: day.Recovered,
+        Active: day.Active,
+        Confirmed: day.Confirmed
+      }));
+    return dailyData;
   } catch (error) {
     console.error(error);
   }
