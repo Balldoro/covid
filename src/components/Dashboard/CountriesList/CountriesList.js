@@ -28,7 +28,7 @@ function CountriesList({ countries }) {
       <List>
         {countries
           .filter(country =>
-            country.Country.toUpperCase().includes(searchWord.toUpperCase())
+            new RegExp("^" + searchWord, "i").test(country.Country)
           )
           .map(country => (
             <ListItem key={country.ISO2}>
