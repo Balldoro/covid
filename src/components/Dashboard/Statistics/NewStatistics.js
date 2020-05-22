@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Chart } from "chart.js";
 import { ChartWrapper } from "./StatisticsStyles";
-import getPercentage from "../../helpers/getPercentage";
+import { getPercentage } from "../../helpers/functions";
 
 function NewCases({
   cases: { AllNewCases, NewConfirmed, NewRecovered, NewDeaths }

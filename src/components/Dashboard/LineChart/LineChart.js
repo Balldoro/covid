@@ -3,7 +3,9 @@ import { Chart } from "chart.js";
 import { CardTitle } from "../DashboardStyles";
 import { ChartWrapper, LineChartCard } from "./LineChartStyles";
 
-function LineChart({ confirmed, active, recovered, deaths }) {
+function LineChart({
+  dailyData: { DailyConfirmed, DailyActive, DailyRecovered, DailyDeaths }
+}) {
   const cnv = "daily-chart";
   useEffect(() => {
     const dailyChart = new Chart(cnv, {
@@ -12,7 +14,7 @@ function LineChart({ confirmed, active, recovered, deaths }) {
         datasets: [
           {
             label: "Confirmed",
-            data: confirmed,
+            data: DailyConfirmed,
             borderColor: ["#790a98"],
             borderCapStyle: "round",
             borderJoinStyle: "round",
@@ -24,7 +26,7 @@ function LineChart({ confirmed, active, recovered, deaths }) {
           },
           {
             label: "Active",
-            data: active,
+            data: DailyActive,
             borderColor: ["#03568e"],
             borderCapStyle: "round",
             borderJoinStyle: "round",
@@ -35,25 +37,25 @@ function LineChart({ confirmed, active, recovered, deaths }) {
             fill: false
           },
           {
-            label: "Deaths",
-            data: deaths,
-            borderColor: ["#a70303"],
-            borderCapStyle: "round",
-            borderJoinStyle: "round",
-            pointBackgroundColor: "rgb(230, 46, 46)",
-            hoverBackgroundColor: ["#a70303"],
-            pointHoverRadius: 5,
-            borderWidth: 6,
-            fill: false
-          },
-          {
             label: "Recovered",
-            data: recovered,
+            data: DailyRecovered,
             borderColor: ["#198200"],
             borderCapStyle: "round",
             borderJoinStyle: "round",
             pointBackgroundColor: "rgb(47, 184, 15)",
             hoverBackgroundColor: ["#198200"],
+            pointHoverRadius: 5,
+            borderWidth: 6,
+            fill: false
+          },
+          {
+            label: "Deaths",
+            data: DailyDeaths,
+            borderColor: ["#a70303"],
+            borderCapStyle: "round",
+            borderJoinStyle: "round",
+            pointBackgroundColor: "rgb(230, 46, 46)",
+            hoverBackgroundColor: ["#a70303"],
             pointHoverRadius: 5,
             borderWidth: 6,
             fill: false
@@ -63,14 +65,23 @@ function LineChart({ confirmed, active, recovered, deaths }) {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        legend: {
+          labels: {
+            fontColor: "#fff",
+            fontFamily: "'Arial','sans-serif'"
+          }
+        },
         scales: {
           xAxes: [
             {
               type: "time",
               time: {
-                parser: "MMM DD",
+                isoWeekday: true,
                 unit: "week",
-                isoWeekday: true
+                parser: "MM DD",
+                displayFormats: {
+                  week: "MM DD"
+                }
               }
             }
           ]
@@ -78,7 +89,7 @@ function LineChart({ confirmed, active, recovered, deaths }) {
       }
     });
     return () => dailyChart.destroy();
-  }, [active, confirmed, recovered, deaths]);
+  }, [DailyActive, DailyConfirmed, DailyRecovered, DailyDeaths]);
   return (
     <LineChartCard>
       <CardTitle>Daily Cases</CardTitle>
