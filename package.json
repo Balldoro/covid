@@ -2,6 +2,7 @@
   "name": "covid19",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://balldoro.github.io/covid",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -16,7 +17,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +38,7 @@
   },
   "devDependencies": {
     "chart.js": "^2.9.3",
+    "gh-pages": "^2.2.0",
     "react-icons": "^3.10.0",
     "styled-components": "^5.1.0"
   }
