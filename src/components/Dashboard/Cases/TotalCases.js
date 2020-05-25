@@ -6,30 +6,49 @@ function TotalCases({
 }) {
   return (
     <>
-      <Case confirmed>
-        <CaseTitle>All</CaseTitle>
-        <CaseCounter>
-          <CountUp start={0} duration={3} separator=" " end={TotalConfirmed} />
-        </CaseCounter>
-      </Case>
-      <Case active>
-        <CaseTitle>Active</CaseTitle>
-        <CaseCounter>
-          <CountUp start={0} duration={3} separator=" " end={TotalAffected} />
-        </CaseCounter>
-      </Case>
-      <Case recovered>
-        <CaseTitle>Recovered</CaseTitle>
-        <CaseCounter>
-          <CountUp start={0} duration={3} separator=" " end={TotalRecovered} />
-        </CaseCounter>
-      </Case>
-      <Case deaths>
-        <CaseTitle>Deaths</CaseTitle>
-        <CaseCounter>
-          <CountUp start={0} duration={3} separator=" " end={TotalDeaths} />
-        </CaseCounter>
-      </Case>
+      {TotalConfirmed ? (
+        <>
+          <Case confirmed>
+            <CaseTitle>All</CaseTitle>
+            <CaseCounter>
+              <CountUp
+                start={0}
+                duration={3}
+                separator=" "
+                end={TotalConfirmed}
+              />
+            </CaseCounter>
+          </Case>
+          <Case active>
+            <CaseTitle>Active</CaseTitle>
+            <CaseCounter>
+              <CountUp
+                start={0}
+                duration={3}
+                separator=" "
+                end={TotalAffected}
+              />
+            </CaseCounter>
+          </Case>
+          <Case recovered>
+            <CaseTitle>Recovered</CaseTitle>
+            <CaseCounter>
+              <CountUp
+                start={0}
+                duration={3}
+                separator=" "
+                end={TotalRecovered}
+              />
+            </CaseCounter>
+          </Case>
+          <Case deaths>
+            <CaseTitle>Deaths</CaseTitle>
+            <CaseCounter>
+              <CountUp start={0} duration={3} separator=" " end={TotalDeaths} />
+            </CaseCounter>
+          </Case>
+        </>
+      ) : null}
     </>
   );
 }

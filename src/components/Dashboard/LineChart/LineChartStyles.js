@@ -4,7 +4,7 @@ import { Card } from "../DashboardStyles";
 export const ChartWrapper = styled.div`
   position: relative;
   min-height: 280px;
-  height: 350px;
+  height: 410px;
   width: 100%;
 `;
 

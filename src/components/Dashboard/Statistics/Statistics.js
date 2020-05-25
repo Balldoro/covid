@@ -7,7 +7,7 @@ function Statistics({ cases, newCases }) {
   const [activeButton, setActiveButton] = useState("total");
   return (
     <Card>
-      <CardTitle>Ratios</CardTitle>
+      <CardTitle>Ratios(%)</CardTitle>
       <Navigation>
         <Button
           active={activeButton === "total" ? true : false}

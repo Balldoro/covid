@@ -29,7 +29,7 @@ function MostInfected({ countries }) {
                   start={0}
                   end={country.TotalConfirmed}
                   duration={3}
-                  separator=","
+                  separator=" "
                 />
               </Infected>
             </ListItem>
