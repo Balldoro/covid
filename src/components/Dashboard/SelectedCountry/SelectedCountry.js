@@ -9,7 +9,7 @@ import {
   BlankLink,
   GoBackArrow
 } from "./SelectedCountryStyles";
-import LineChart from "../LineChart/LineChart";
+import LineChart from "./LineChart/LineChart";
 import { SpinnerWrapper, Spinner } from "../DashboardStyles";
 import { FaArrowLeft } from "react-icons/fa";
 import {

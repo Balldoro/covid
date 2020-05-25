@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Chart } from "chart.js";
-import { CardTitle } from "../DashboardStyles";
+import { CardTitle } from "../../DashboardStyles";
 import { ChartWrapper, LineChartCard } from "./LineChartStyles";
 
 function LineChart({

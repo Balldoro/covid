@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Wrapper } from "./WorldStyles";
 import Cases from "../Cases/Cases";
 import { fetchGlobalData } from "../../../api";
-import MostInfected from "../MostInfected/MostInfected";
+import MostInfected from "./MostInfected/MostInfected";
 import Statistics from "../Statistics/Statistics";
 import { SpinnerWrapper, Spinner } from "../DashboardStyles";
 

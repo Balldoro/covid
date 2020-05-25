@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Wrapper } from "./CountriesStyles";
 import { fetchAllCountries } from "../../../api";
-import CountriesList from "../CountriesList/CountriesList";
+import CountriesList from "./CountriesList/CountriesList";
 import { SpinnerWrapper, Spinner } from "../DashboardStyles";
 
 function Countries() {

@@ -1,5 +1,5 @@
 import React from "react";
-import { CardTitle } from "../DashboardStyles";
+import { CardTitle } from "../../DashboardStyles";
 import {
   ListItem,
   CountryName,

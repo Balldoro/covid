@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardTitle } from "../DashboardStyles";
+import { Card, CardTitle } from "../../DashboardStyles";
 import { FaSearch } from "react-icons/fa";
 import {
   Filter,

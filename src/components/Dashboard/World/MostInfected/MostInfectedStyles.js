@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Card } from "../DashboardStyles";
+import { Card } from "../../DashboardStyles";
 
 export const MostInfectedCard = styled(Card)`
   @media (min-width: 860px) {
